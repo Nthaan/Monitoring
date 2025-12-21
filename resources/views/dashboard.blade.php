@@ -393,8 +393,6 @@
         });
     </script>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <script>
         function renderIcons() {
             lucide.createIcons();
@@ -424,27 +422,54 @@
 
     <!-- scirpt untuk search  -->
     <script>
+        /* ===== DROPDOWN STATUS ===== */
+        const dropdown = document.getElementById('statusDropdown');
+        const label = document.getElementById('statusLabel');
+        const items = dropdown.querySelectorAll('.filter-menu div');
+
+        let selectedStatus = "";
+
+        dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('show');
+        });
+        items.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                selectedStatus = item.dataset.value;
+                label.innerText = item.innerText;
+
+                dropdown.classList.remove('show');
+                filterTable();
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+    <script>
         const searchInput = document.getElementById('searchInput');
-        const statusFilter = document.getElementById('statusFilter');
-        const rows = document.querySelectorAll('.pengajuan-table tbody tr');
 
         function filterTable() {
             const keyword = searchInput.value.toLowerCase();
-            const status = statusFilter.value.toLowerCase();
 
-            rows.forEach(row => {
+            document.querySelectorAll('.pengajuan-table tbody tr').forEach(row => {
                 const text = row.innerText.toLowerCase();
                 const statusText = row.querySelector('.badge').innerText.toLowerCase();
 
                 const matchSearch = text.includes(keyword);
-                const matchStatus = status === "" || statusText === status;
+                const matchStatus =
+                    selectedStatus === "" || statusText === selectedStatus;
 
                 row.style.display = (matchSearch && matchStatus) ? "" : "none";
             });
         }
 
         searchInput.addEventListener('input', filterTable);
-        statusFilter.addEventListener('change', filterTable);
     </script>
 
 </body>

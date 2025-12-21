@@ -861,8 +861,7 @@ body,
 
 
 
-/* DROPDOWN UNTUK FILTER  */
-
+/* ===== FILTER DROPDOWN (CLEAN) ===== */
 .filter-wrapper {
     position: relative;
     display: flex;
@@ -873,33 +872,47 @@ body,
     background: #f9fafb;
     border: 1px solid #e5e7eb;
     cursor: pointer;
+    user-select: none;
+    transition: 0.2s ease;
 }
 
-.filter-wrapper i {
-    width: 18px;
-    height: 18px;
-    color: #64748b;
-}
-
-.status-filter {
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    font-weight: 500;
-    color: #334155;
-    cursor: pointer;
-    appearance: none; 
-    padding-right: 8px;
-}
-
-.status-filter:focus {
-    outline: none;
-}
-
-/* hover */
 .filter-wrapper:hover {
     background: #eef5ff;
     border-color: #c7d2fe;
+}
+
+.filter-wrapper span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+}
+
+.filter-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    overflow: hidden;
+    display: none;
+    z-index: 20;
+}
+
+.filter-menu div {
+    padding: 12px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-menu div:hover {
+    background: #eef5ff;
+}
+
+/* SHOW */
+.filter-wrapper.show .filter-menu {
+    display: block;
 }
 
 /* ===== DARK MODE ===== */
@@ -908,12 +921,17 @@ body,
     border-color: #1e293b;
 }
 
-.dark .status-filter {
+.dark .filter-wrapper span {
     color: #e5e7eb;
 }
 
-.dark .filter-wrapper:hover {
+.dark .filter-menu {
+    background: #020617;
+}
+
+.dark .filter-menu div:hover {
     background: #1e293b;
 }
+
 
 
