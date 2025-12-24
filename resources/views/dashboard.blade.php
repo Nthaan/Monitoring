@@ -33,10 +33,11 @@
             <!-- LOGOUT -->
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="logout-btn">
+                <button type="submit" class="logout-btn" id="logoutBtn">
                     <i data-lucide="log-out"></i>
                     Logout
                 </button>
+
             </form>
         </div>
     </header>
@@ -75,55 +76,76 @@
 
 
                         <!-- TOMBOL AJUKAN -->
-                        <button class="btn-primary" id="openModal">
+                        <button class="btn-primary role-mahasiswa" id="openModal">
                             <i data-lucide="plus"></i>
                             Ajukan Layanan
                         </button>
+
 
                     </div>
 
                 </div>
 
 
+                <div class="card role-mahasiswa role-dosen">
 
-                <table class="pengajuan-table">
-                    <thead>
-                        <tr>
-                            <th>Jenis Layanan</th>
-                            <th>Tanggal</th>
-                            <th>Status</th>
-                            <th>PIC</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b>Bimbingan Skripsi</b></td>
-                            <td>20 Nov 2025</td>
-                            <td>
-                                <span class="badge blue">Sedang Diproses</span>
-                            </td>
-                            <td>Anaxagoras</td>
-                        </tr>
+                    <table class="pengajuan-table">
+                        <thead>
+                            <tr>
+                                <th>Jenis Layanan</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>PIC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Bimbingan Skripsi</b></td>
+                                <td>20 Nov 2025</td>
+                                <td class="status-cell">
+                                    <span class="badge blue status-text">Sedang Diproses</span>
 
-                        <tr>
-                            <td><b>Surat Keterangan</b></td>
-                            <td>18 Nov 2025</td>
-                            <td>
-                                <span class="badge orange">Menunggu Approval</span>
-                            </td>
-                            <td>Lygus</td>
-                        </tr>
+                                    <!-- KHUSUS DOSEN -->
+                                    <select class="status-select role-dosen">
+                                        <option value="sedang diproses">Sedang Diproses</option>
+                                        <option value="menunggu approval">Menunggu Approval</option>
+                                        <option value="selesai">Selesai</option>
+                                    </select>
+                                </td>
 
-                        <tr>
-                            <td><b>Pengajuan Cuti</b></td>
-                            <td>15 Nov 2025</td>
-                            <td>
-                                <span class="badge green">Selesai</span>
-                            </td>
-                            <td>Phainon</td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <td>Anaxagoras</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Surat Keterangan</b></td>
+                                <td>18 Nov 2025</td>
+                                <td>
+                                    <span class="badge orange">Menunggu Approval</span>
+
+                                    <select class="status-select role-dosen">
+                                        <option value="sedang diproses">Sedang Diproses</option>
+                                        <option value="menunggu approval">Menunggu Approval</option>
+                                        <option value="selesai">Selesai</option>
+                                </td>
+                                <td>Lygus</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Pengajuan Cuti</b></td>
+                                <td>15 Nov 2025</td>
+                                <td>
+                                    <span class="badge green">Selesai</span>
+
+                                    <select class="status-select role-dosen">
+                                        <option value="sedang diproses">Sedang Diproses</option>
+                                        <option value="menunggu approval">Menunggu Approval</option>
+                                        <option value="selesai">Selesai</option>            
+                                </td>
+                                <td>Phainon</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
@@ -144,6 +166,17 @@
                 <p>Menunggu Review</p>
                 <h2>1</h2>
             </div>
+
+            <div class="summary-card black role-admin">
+                <p>Total Pengajuan</p>
+                <h2>120</h2>
+            </div>
+
+            <div class="summary-card red role-dosen">
+                <p>Perlu Review</p>
+                <h2>4</h2>
+            </div>
+
         </div>
 
     </div>
@@ -472,7 +505,30 @@
         searchInput.addEventListener('input', filterTable);
     </script>
 
+    <!-- ROLE BASED DISPLAY SCRIPT -->
+    <script>
+        const role = localStorage.getItem('role') || 'mahasiswa';
+
+        // sembunyikan semua role-based element dulu
+        document.querySelectorAll('[class*="role-"]').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // tampilkan sesuai role
+        document.querySelectorAll('.role-' + role).forEach(el => {
+            el.style.display = '';
+        });
+
+        console.log('ROLE AKTIF:', role);
+    </script>
+
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('role');
+        });
+    </script>
+
+
 </body>
 
 </html>
-

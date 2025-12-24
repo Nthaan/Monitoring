@@ -5,22 +5,26 @@
 
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: #eaf5f3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* ===== LOGIN CARD ===== */
 .login-card {
     width: 900px;
+    max-width: 95%;
     height: 500px;
     display: flex;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0,0,0,.2);
+    background: white;
 }
 
+/* ===== LEFT PANEL ===== */
 .left-panel {
     width: 50%;
     background: #18244d;
@@ -35,32 +39,57 @@ body {
     height: auto;
 }
 
+/* ===== RIGHT PANEL ===== */
 .right-panel {
     width: 50%;
     background: #f09321;
     padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .right-panel h2 {
     margin-bottom: 40px;
+    color: #18244d;
+    line-height: 1.3;
 }
 
+.right-panel h2 span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ===== INPUT ===== */
 .right-panel input {
     width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 10px;
     border: none;
     margin-bottom: 20px;
+    font-size: 14px;
 }
 
+.right-panel input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(24,36,77,0.4);
+}
+
+/* ===== BUTTON ===== */
 .right-panel button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #18244d;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
-
-
+.right-panel button:hover {
+    background: #0f1738;
+    transform: translateY(-1px);
+}
