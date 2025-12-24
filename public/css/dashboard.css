@@ -24,7 +24,7 @@ body::before {
 }
 
 
-/* ===== HEADER ===== */
+/*  HEADER */
 .topbar {
     height: 70px;
     background: rgba(255, 255, 255, 0.9);
@@ -64,7 +64,7 @@ body::before {
     color: #18244d;
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON  */
 .btn-primary {
     background: linear-gradient(135deg, #f09321, #f97316);
     color: white;
@@ -114,7 +114,7 @@ body::before {
     box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
 }
 
-/* ===== LAYOUT ===== */
+/* LAYOUT*/
 .dashboard-layout {
     display: grid;
     grid-template-columns: 3fr 1.2fr;
@@ -125,7 +125,7 @@ body::before {
     margin-top: 32px;
 }
 
-/* ===== CARD ===== */
+/*CARD */
 .card,
 .summary-card {
     background: rgba(255, 255, 255, 0.95);
@@ -136,7 +136,7 @@ body::before {
         inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-/* ===== TABLE HEADER ===== */
+/*  TABLE HEADER  */
 .table-header {
     display: flex;
     justify-content: space-between;
@@ -163,7 +163,7 @@ body::before {
     background: #f9fafb;
 }
 
-/* ===== TABLE ===== */
+/*  TABLE  */
 .pengajuan-table {
     width: 100%;
     border-collapse: separate;
@@ -200,7 +200,7 @@ body::before {
     border-radius: 0 16px 16px 0;
 }
 
-/* ===== BADGE ===== */
+/*  BADGE */
 .badge {
     padding: 6px 14px;
     border-radius: 999px;
@@ -223,7 +223,7 @@ body::before {
     color: #15803d;
 }
 
-/* ===== SUMMARY ===== */
+/* SUMMARY */
 .right-content {
     display: flex;
     flex-direction: column;
@@ -275,7 +275,7 @@ body::before {
 }
 
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media (max-width: 900px) {
     .dashboard-layout {
         grid-template-columns: 1fr;
@@ -283,7 +283,7 @@ body::before {
 }
 
 
-/* ===== THEME SWITCHER ===== */
+/* THEME TOGGLE */
 .theme-wrapper {
     position: relative;
     margin-right: 16px;
@@ -333,7 +333,7 @@ body::before {
     background: #f1f5f9;
 }
 
-/* ===== THEME TOGGLE ===== */
+/* THEME TOGGLE */
 .theme-toggle {
     background: transparent;
     border: none;
@@ -364,7 +364,7 @@ body::before {
 }
 
 
-/* ================= SOFT DARK MODE ================= */
+/* DARK MODE */
 .dark {
     background:
         radial-gradient(circle at top right, #1e293b, transparent 45%),
@@ -457,7 +457,7 @@ body,
 }
 
 
-/* ===== GEN Z FOOTER ===== */
+/* FOOTER */
 .footer {
     margin: 40px auto 20px;
     padding: 14px 24px;
@@ -495,8 +495,7 @@ body,
 }
 
 
-/* ===== MODAL AJUKAN LAYANAN ===== */
-/* ===== MODAL AJUKAN LAYANAN (GEN Z MODE) ===== */
+/*  MODAL AJUKAN LAYANAN*/
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -654,7 +653,7 @@ body,
 }
 
 
-/* ===== SERVICE CARD SELECTION ===== */
+/* SERVICE CARD SELECTION*/
 .service-options {
     display: grid;
     grid-template-columns: 1fr;
@@ -752,7 +751,7 @@ body,
 }
 
 
-/* ===== PIC CARD (HORIZONTAL) ===== */
+/* PIC CARD */
 .pic-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -829,7 +828,7 @@ body,
 }
 
 
-/* ===== TOAST NOTIFICATION ===== */
+/*TOAST NOTIFICATION */
 .toast {
     position: fixed;
     bottom: 24px;
@@ -875,7 +874,7 @@ body,
 
 
 
-/* ===== FILTER DROPDOWN (CLEAN) ===== */
+/* FILTER DROPDOWN */
 .filter-wrapper {
     position: relative;
     display: flex;
@@ -948,19 +947,73 @@ body,
 }
 
 
-/* SELECT STATUS  */
-.status-select {
-    display: none;
-    margin-top: 6px;
-    padding: 6px 10px;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    font-size: 13px;
-    cursor: pointer;
+.modal.small {
+    max-width: 360px;
+    text-align: center;
 }
 
-.dark .status-select {
-    background: #020617;
-    color: #e5e7eb;
-    border-color: #1e293b;
+.status-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.status-btn {
+    cursor: pointer;
+    border: none;
+}
+
+
+/* report page CSS can be found in public/css/report.css */
+.report-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-soft);
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+.filter-item i {
+    color: var(--primary);
+    width: 18px;
+    height: 18px;
+}
+
+.filter-item input,
+.filter-item select {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    min-width: 140px;
+}
+
+.filter-item.date input {
+    min-width: 120px;
+}
+
+.filter-item span {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.report-filter .btn-primary {
+    padding: 10px 16px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }

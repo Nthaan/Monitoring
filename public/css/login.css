@@ -12,7 +12,7 @@ body {
     align-items: center;
 }
 
-/* ===== LOGIN CARD ===== */
+/* LOGIN CARD */
 .login-card {
     width: 900px;
     max-width: 95%;
@@ -24,7 +24,7 @@ body {
     background: white;
 }
 
-/* ===== LEFT PANEL ===== */
+/*  LEFT PANEL */
 .left-panel {
     width: 50%;
     background: #18244d;
@@ -39,7 +39,7 @@ body {
     height: auto;
 }
 
-/* ===== RIGHT PANEL ===== */
+/* RIGHT PANEL */
 .right-panel {
     width: 50%;
     background: #f09321;
@@ -61,7 +61,7 @@ body {
     font-weight: bold;
 }
 
-/* ===== INPUT ===== */
+/* INPUT  */
 .right-panel input {
     width: 100%;
     padding: 12px;
@@ -76,7 +76,7 @@ body {
     box-shadow: 0 0 0 2px rgba(24,36,77,0.4);
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON  */
 .right-panel button {
     width: 100%;
     padding: 14px;

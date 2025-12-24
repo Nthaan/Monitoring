@@ -30,3 +30,7 @@ Route::get('/logout-success', function () {
 });
 
 
+Route::get('/report', function () {
+    return view('report');
+});
+

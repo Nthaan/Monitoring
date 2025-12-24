@@ -41,9 +41,8 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
 
     const sso = document.getElementById('sso').value.toLowerCase().trim();
 
-    let role = 'mahasiswa'; // default
+    let role = 'mahasiswa'; 
 
-    // ===== DUMMY ROLE RULE =====
     if (sso.includes('admin')) {
         role = 'admin';
     } else if (sso.includes('dosen')) {

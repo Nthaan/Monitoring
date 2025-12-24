@@ -10,7 +10,6 @@
 
 <body>
 
-    <!-- toast buat notif  -->
 
     <div class="toast" id="toast">
         <i data-lucide="check-circle"></i>
@@ -25,7 +24,6 @@
         </div>
 
         <div class="topbar-right" style="display:flex;align-items:center;gap:12px;">
-            <!-- THEME TOGGLE (1 CLICK) -->
             <button id="themeToggle" class="theme-toggle" title="Ganti Tema">
                 <i data-lucide="moon"></i>
             </button>
@@ -42,7 +40,6 @@
         </div>
     </header>
 
-    <!-- ================= CONTENT ================= -->
     <div class="dashboard-layout">
 
         <!-- LEFT : TABLE -->
@@ -53,14 +50,12 @@
                     <h3>Pengajuan Saya</h3>
                     <div class="table-actions">
 
-                        <!-- SEARCH -->
                         <input
                             type="text"
                             id="searchInput"
                             class="search"
                             placeholder="Cari pengajuan...">
 
-                        <!-- FILTER STATUS -->
                         <div class="filter-wrapper" id="statusDropdown">
                             <i data-lucide="filter"></i>
                             <span id="statusLabel">Semua Status</span>
@@ -74,9 +69,7 @@
                             </div>
                         </div>
 
-
-                        <!-- TOMBOL AJUKAN -->
-                        <button class="btn-primary role-mahasiswa" id="openModal">
+                        <button class="btn-primary role-only role-mahasiswa" id="openModal">
                             <i data-lucide="plus"></i>
                             Ajukan Layanan
                         </button>
@@ -87,7 +80,7 @@
                 </div>
 
 
-                <div class="card role-mahasiswa role-dosen">
+                <div class="card role-only role-mahasiswa role-dosen">
 
                     <table class="pengajuan-table">
                         <thead>
@@ -102,15 +95,11 @@
                             <tr>
                                 <td><b>Bimbingan Skripsi</b></td>
                                 <td>20 Nov 2025</td>
-                                <td class="status-cell">
-                                    <span class="badge blue status-text">Sedang Diproses</span>
+                                <td class="status-cell role-only role-dosen">
+                                    <button class="badge blue status-btn">
+                                        Sedang Diproses
+                                    </button>
 
-                                    <!-- KHUSUS DOSEN -->
-                                    <select class="status-select role-dosen">
-                                        <option value="sedang diproses">Sedang Diproses</option>
-                                        <option value="menunggu approval">Menunggu Approval</option>
-                                        <option value="selesai">Selesai</option>
-                                    </select>
                                 </td>
 
                                 <td>Anaxagoras</td>
@@ -119,27 +108,23 @@
                             <tr>
                                 <td><b>Surat Keterangan</b></td>
                                 <td>18 Nov 2025</td>
-                                <td>
-                                    <span class="badge orange">Menunggu Approval</span>
-
-                                    <select class="status-select role-dosen">
-                                        <option value="sedang diproses">Sedang Diproses</option>
-                                        <option value="menunggu approval">Menunggu Approval</option>
-                                        <option value="selesai">Selesai</option>
+                                <td class="status-cell role-only role-dosen">
+                                    <button class="badge orange status-btn">
+                                        Menunggu Approval
+                                    </button>
                                 </td>
+
+
                                 <td>Lygus</td>
                             </tr>
 
                             <tr>
                                 <td><b>Pengajuan Cuti</b></td>
                                 <td>15 Nov 2025</td>
-                                <td>
-                                    <span class="badge green">Selesai</span>
-
-                                    <select class="status-select role-dosen">
-                                        <option value="sedang diproses">Sedang Diproses</option>
-                                        <option value="menunggu approval">Menunggu Approval</option>
-                                        <option value="selesai">Selesai</option>            
+                                <td class="status-cell role-only role-dosen">
+                                    <button class="badge green status-btn">
+                                        Selesai
+                                    </button>
                                 </td>
                                 <td>Phainon</td>
                             </tr>
@@ -167,12 +152,12 @@
                 <h2>1</h2>
             </div>
 
-            <div class="summary-card black role-admin">
+            <div class="summary-card red role-only role-admin">
                 <p>Total Pengajuan</p>
                 <h2>120</h2>
             </div>
 
-            <div class="summary-card red role-dosen">
+            <div class="summary-card red role-only role-dosen">
                 <p>Perlu Review</p>
                 <h2>4</h2>
             </div>
@@ -181,14 +166,40 @@
 
     </div>
 
+    <div class="modal-overlay" id="statusModal">
+        <div class="modal small">
+
+            <h3>Ubah Status Pengajuan</h3>
+
+            <div class="status-actions">
+                <button class="badge blue" data-status="sedang diproses">
+                    Sedang Diproses
+                </button>
+                <button class="badge orange" data-status="menunggu approval">
+                    Menunggu Approval
+                </button>
+                <button class="badge green" data-status="selesai">
+                    Selesai
+                </button>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" id="closeStatusModal">
+                    Batal
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
     <footer class="footer">
         <span>Smart Campus</span>
         <span>• built with cinta dan kasih AVV</span>
         <span class="footer-year">© 2025</span>
     </footer>
 
-
-    <!-- ================= SCRIPT ================= -->
+    <!-- SCRIPT -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         const body = document.body;
@@ -213,7 +224,7 @@
     </script>
 
 
-    <!-- ===== MODAL AJUKAN LAYANAN ===== -->
+    <!--  MODAL AJUKAN LAYANAN -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
 
@@ -289,7 +300,7 @@
                     </div>
                 </div>
 
-                <!-- ================= PIC ================= -->
+                <!--  PIC  -->
                 <div class="form-group">
                     <label>PIC (Penanggung Jawab)</label>
 
@@ -325,7 +336,7 @@
                     </div>
                 </div>
 
-                <!-- ================= ACTION ================= -->
+                <!--  ACTION  -->
                 <div class="modal-actions">
                     <button type="button" class="btn-secondary" id="closeModal">
                         Batal
@@ -431,16 +442,13 @@
             lucide.createIcons();
         }
 
-        // pertama load
         renderIcons();
 
-        // render ulang pas modal dibuka
         document.getElementById('openModal').addEventListener('click', () => {
             document.getElementById('modalOverlay').classList.add('show');
             setTimeout(renderIcons, 10);
         });
 
-        // render ulang pas toast muncul
         function showToast() {
             const toast = document.getElementById('toast');
             toast.classList.add('show');
@@ -455,7 +463,7 @@
 
     <!-- scirpt untuk search  -->
     <script>
-        /* ===== DROPDOWN STATUS ===== */
+        //dropdown 
         const dropdown = document.getElementById('statusDropdown');
         const label = document.getElementById('statusLabel');
         const items = dropdown.querySelectorAll('.filter-menu div');
@@ -505,28 +513,56 @@
         searchInput.addEventListener('input', filterTable);
     </script>
 
-    <!-- ROLE BASED DISPLAY SCRIPT -->
-    <script>
-        const role = localStorage.getItem('role') || 'mahasiswa';
+<script>
+    const statusModal = document.getElementById('statusModal');
+    const closeStatusModal = document.getElementById('closeStatusModal');
 
-        // sembunyikan semua role-based element dulu
-        document.querySelectorAll('[class*="role-"]').forEach(el => {
-            el.style.display = 'none';
+    let activeBadge = null;
+
+    // buka modal
+    document.querySelectorAll('.status-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            activeBadge = btn;
+            statusModal.classList.add('show');
         });
+    });
 
-        // tampilkan sesuai role
-        document.querySelectorAll('.role-' + role).forEach(el => {
-            el.style.display = '';
+    // pilih status
+    statusModal.querySelectorAll('[data-status]').forEach(option => {
+        option.addEventListener('click', () => {
+            const status = option.dataset.status;
+
+            activeBadge.innerText = option.innerText;
+            activeBadge.className = 'badge status-btn';
+
+            if (status === 'sedang diproses') activeBadge.classList.add('blue');
+            if (status === 'menunggu approval') activeBadge.classList.add('orange');
+            if (status === 'selesai') activeBadge.classList.add('green');
+
+            statusModal.classList.remove('show');
+            showToastStatus();
         });
+    });
 
-        console.log('ROLE AKTIF:', role);
-    </script>
+    closeStatusModal.onclick = () => {
+        statusModal.classList.remove('show');
+    };
 
-    <script>
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            localStorage.removeItem('role');
-        });
-    </script>
+    statusModal.addEventListener('click', (e) => {
+        if (e.target === statusModal) {
+            statusModal.classList.remove('show');
+        }
+    });
+
+    function showToastStatus() {
+        const toast = document.getElementById('toast');
+        toast.querySelector('span').innerText = 'Status berhasil diperbarui';
+        toast.classList.add('show');
+
+        setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+</script>
 
 
 </body>
